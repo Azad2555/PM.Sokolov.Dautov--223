@@ -1,0 +1,36 @@
+CREATE DATABASE ShopDB
+
+USE ShopDB
+
+
+CREATE TABLE Categories(
+    CatID INT IDENTITY(1,1) PRIMARY KEY
+	CatName NVARCHAR(150) NOT NOLL,
+	Description NVARCHAR(400)
+);
+
+CREATE TABLE Suppliers(
+    SuppID INT IDENTITY(1,1) PRIMARY KEY,
+	SuppName NVARCHAR(100) NOT NULL,
+	ContactName NVARCHAR(100),
+	Phone NVARCHAR(30),
+	Email NVARCHAR(100),
+	Address NVARCHAR(200)
+);
+
+
+CREATE TABLE Product(
+    ProdID INT IDENTITY(1,1) PRIMARY KEY,
+	ProdName NVARCHAR(100) NOT NULL,
+	CatID INT,
+	SuppID INT,
+	CatID INT,
+	Price MONEY NOT NULL,
+	StockQuantity INT NOT NULL,
+	Description NVARCHAR(400),
+	FOREIGN KEY (CatID) REFERENCES Categories(CatID),
+	FOREIGN KEY (SuppID) REFERENCES Suppliers(SuppID)
+);
+	
+	
+	
